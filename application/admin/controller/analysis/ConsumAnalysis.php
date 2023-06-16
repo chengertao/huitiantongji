@@ -13,6 +13,8 @@ class ConsumAnalysis  extends Backend
 
     public function index()
     {
+        $this->request->filter(['strip_tags', 'trim']);
+        return $this->view->fetch();
         dump( 'ConsumAnalysis');die;
     }
 
