@@ -1,10 +1,11 @@
 define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'echarts', 'echarts-theme'], function ($, undefined, Backend, Table, Form,Template, Echarts) {
 
+
+
     var Controller = {
         index:function (){
 
-            /**柱状图*/
-            var userBarChart1  = Echarts.init($('#bar-chart1')[0]);
+            var barchart1 = Echarts.init($('#bar-chart1')[0]);
             var barData = [[10],[90]]; //原始数据
             var barBorderRadiusItems = [
                 [10, 0, 0, 10],
@@ -81,27 +82,29 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'echarts'
                 series : optionVal
 
             };
-            userBarChart1.setOption(option);
+            barchart1.setOption(option);
 
-            var userBarChart2  = Echarts.init($('#bar-chart2')[0]);
-            var barData2 = [[10],[90]]; //原始数据
-            var barBorderRadiusItems2 = [
+
+            var barchart2 = Echarts.init($('#bar-chart2')[0]);
+            var barData = [[10],[90]]; //原始数据
+            var barBorderRadiusItems = [
                 [10, 0, 0, 10],
                 [0, 10, 10, 0]
             ];
-            var optionVal2 = [];
-            for (var i = 0, length = barData2.length; i < length; i++) {
+            var optionVal = [];
+            for (var i = 0, length = barData.length; i < length; i++) {
                 var tmpValue = {};
                 tmpValue.type = 'bar';
                 tmpValue.stack = '总量';
                 tmpValue.label = { normal: {show: true,position: 'insideRight',formatter:'{c}%'}};
                 tmpValue.itemStyle = {
-                    barBorderRadius: barBorderRadiusItems2[i] // 圆角半径, 单位px, 支持传入数组分别指定 4 个圆角半径
+                    barBorderRadius: barBorderRadiusItems[i] // 圆角半径, 单位px, 支持传入数组分别指定 4 个圆角半径
                 };
-                tmpValue.data = barData2[i];
-                optionVal2[i] = tmpValue;
+                tmpValue.data = barData[i];
+                optionVal[i] = tmpValue;
             }
             var option = {
+                color: ['rgb(64, 158, 255)', 'rgb(211,19,58)'],
                 grid: {
                     x: 0, // 左间距
                     y: 0, // 上间距
@@ -152,35 +155,36 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'echarts'
                         color: '#cdd3ee', // 刻度标签文字的颜色
                         // 使用字符串模板，模板变量为刻度默认标签 {value}
                         formatter: '{value}'
-                    }
+                    },
                     // 类目数据，在类目轴（type: 'category'）中有效
                     //data: ['北京']
                 },
-                series:optionVal2
+                series : optionVal
+
             };
-            userBarChart2.setOption(option);
+            barchart2.setOption(option);
 
 
-            var userBarChart3  = Echarts.init($('#bar-chart3')[0]);
-            var barData3 = [[10],[90]]; //原始数据
-            var barBorderRadiusItems3 = [
+            var barchart3 = Echarts.init($('#bar-chart3')[0]);
+            var barData = [[10],[90]]; //原始数据
+            var barBorderRadiusItems = [
                 [10, 0, 0, 10],
                 [0, 10, 10, 0]
             ];
-            var optionVal3 = [];
-            for (var i = 0, length = barData3.length; i < length; i++) {
+            var optionVal = [];
+            for (var i = 0, length = barData.length; i < length; i++) {
                 var tmpValue = {};
                 tmpValue.type = 'bar';
                 tmpValue.stack = '总量';
                 tmpValue.label = { normal: {show: true,position: 'insideRight',formatter:'{c}%'}};
                 tmpValue.itemStyle = {
-                    barBorderRadius: barBorderRadiusItems3[i] // 圆角半径, 单位px, 支持传入数组分别指定 4 个圆角半径
+                    barBorderRadius: barBorderRadiusItems[i] // 圆角半径, 单位px, 支持传入数组分别指定 4 个圆角半径
                 };
-                tmpValue.data = barData3[i];
-                optionVal3[i] = tmpValue;
+                tmpValue.data = barData[i];
+                optionVal[i] = tmpValue;
             }
             var option = {
-                color:['#0babe8','#d711e5'],
+                color: ['rgb(64, 158, 255)', 'rgb(211,19,58)'],
                 grid: {
                     x: 0, // 左间距
                     y: 0, // 上间距
@@ -231,23 +235,41 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'echarts'
                         color: '#cdd3ee', // 刻度标签文字的颜色
                         // 使用字符串模板，模板变量为刻度默认标签 {value}
                         formatter: '{value}'
-                    }
+                    },
                     // 类目数据，在类目轴（type: 'category'）中有效
                     //data: ['北京']
                 },
-                series:optionVal3
-            };
-            userBarChart3.setOption(option);
+                series : optionVal
 
-            //图形宽度随屏幕宽度改变而改变
-            window.addEventListener("resize", () => { this.userBarChart1.resize();  this.userBarChart2.resize();  this.userBarChart3.resize();})
+            };
+            barchart3.setOption(option);
 
 
             /**折线图*/
-            var linechart1 = Echarts.init(document.getElementById('line-chart1'));
+            var linechart1 = Echarts.init($('#line-chart1')[0]);
             var option = {
                 title: {
-                    text: '周新增用户趋势'
+                    text: '交易金额',
+                    show:false,
+                    left:40,
+                    textStyle:{
+                        color:'#333',
+                        fontStyle : 'normal',
+                        fontWeight:'normal',
+                        fontSize:15,
+                        width:30,
+                        height:30
+                    }
+                },
+                legend:{
+                    bottom:10,
+                    left: 'center',
+                    orient: 'horizontal',
+                    lineStyle:{
+                        type:'solid'
+                    },
+                    icon:'line'
+                    // icon:['roundRect', 'triangle']
                 },
                 tooltip:{
                     trigger: 'axis',  // axis   item   none三个值
@@ -255,11 +277,96 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'echarts'
                 xAxis: {
                     type: 'category',
                     data:['23年15周','23年16周', '23年17周', '23年18周', '23年19周', '23年20周','23年21周'],
-                    axisTick: false,
-                    boundaryGap: false
+                    axisLine: {
+                        lineStyle: {
+                            color: '#adafaf', //x轴的颜色
+                        }
+                    },
+                    axisTick: false //是否显示刻度
                 },
                 yAxis: {
-                   type:'value',
+                    type:'value',
+                    splitLine: {
+                        show: true,
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#adafaf', //y轴的颜色
+                        },
+                    },
+                    /*axisLabel: {
+                        textStyle: { fontSize: '80%', color: '#02afff' },
+                    },*/
+                   /* axisLine: {
+                        show: false
+                    },*/
+                    axisTick: false //是否显示刻度
+                },
+                series: [
+                    {
+                        type: 'line',
+                        name: '会员',
+                        data: [80,120,200,300,150,120,110],
+                        symbol: 'circle',//折线点设置为实心点
+                        symbolSize: 2,   //折线点的大小
+                        itemStyle: {
+                            normal: {
+                                color: "#e33f4d",//折线点的颜色
+                                lineStyle: {
+                                    color: "#e33f4d"//折线的颜色
+                                }
+                            }
+                        }
+                    },
+                    {
+                        type: 'line',
+                        name: '非会员',
+                        data: [100,140,230,340,170,150,130],
+                        symbol: 'circle',//折线点设置为实心点
+                        symbolSize: 0,   //折线点的大小
+                        itemStyle: {
+                            normal: {
+                                color: "#09b2fc",//折线点的颜色
+                                lineStyle: {
+                                    color: "#09b2fc"//折线的颜色
+                                }
+                            }
+                        }
+                    }
+                ]
+            };
+            linechart1.setOption(option);
+            /**折线图*/
+            var linechart2 = Echarts.init($('#line-chart2')[0]);
+            var option = {
+               /* title: {
+                    text: '周新增用户趋势'
+                },*/
+                legend:{
+                    bottom:10,
+                    left: 'center',
+                    orient: 'horizontal',
+                    lineStyle:{
+                        type:'solid'
+                    },
+                    icon:'line'
+                    // icon:['roundRect', 'triangle']
+                },
+                tooltip:{
+                    trigger: 'axis',  // axis   item   none三个值
+                },
+                xAxis: {
+                    type: 'category',
+                    data:['23年15周','23年16周', '23年17周', '23年18周', '23年19周', '23年20周','23年21周'],
+                    axisLine: {
+                        lineStyle: {
+                            color: '#adafaf', //x轴的颜色
+                        }
+                    },
+                    axisTick: false,
+                },
+                yAxis: {
+                    type:'value',
                     splitLine: {
                         show: true,
                     },
@@ -269,10 +376,16 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'echarts'
                     axisLine: {
                         show: false
                     },
-                    // axisTick: false
+                    axisTick: false,
+                    axisLine: {
+                        lineStyle: {
+                            color: '#adafaf', //x轴的颜色
+                        }
+                    }
                 },
                 series: [
                     {
+                        name:'会员',
                         type: 'line',
                         data: [80,120,200,300,150,120,110],
                         symbol: 'circle',//折线点设置为实心点
@@ -285,47 +398,18 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'echarts'
                                 }
                             }
                         }
-                    }
-                ]
-            };
-            linechart1.setOption(option);
-
-            var linechart2 = Echarts.init($('#line-chart2')[0]);
-            var option = {
-                title: {
-                    text: '周打开次数'
-                },
-                tooltip:{
-                    trigger: 'axis',  // axis   item   none三个值
-                },
-                xAxis: {
-                    type: 'category',
-                    data:['23年15周','23年16周', '23年17周', '23年18周', '23年19周', '23年20周','23年21周']
-                },
-                yAxis: {
-                    type:'value',
-                    splitLine: {
-                        show: true,
                     },
-                    /*axisLabel: {
-                        textStyle: { fontSize: '80%', color: '#02afff' },
-                    },*/
-                    axisLine: {
-                        show: false
-                    },
-                    // axisTick: false
-                },
-                series: [
                     {
+                        name:'非会员',
                         type: 'line',
-                        data: [80,120,200,300,150,120,110],
+                        data: [100,160,280,320,180,130,110],
                         symbol: 'circle',//折线点设置为实心点
                         symbolSize: 2,   //折线点的大小
                         itemStyle: {
                             normal: {
-                                color: "#2fc25b",//折线点的颜色
+                                color: "#c40aee",//折线点的颜色
                                 lineStyle: {
-                                    color: "#2fc25b"//折线的颜色
+                                    color: "#c40aee"//折线的颜色
                                 }
                             }
                         }
@@ -334,117 +418,148 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'echarts'
             };
             linechart2.setOption(option);
 
+            /**折线图*/
             var linechart3 = Echarts.init($('#line-chart3')[0]);
             var option = {
-                title: {
-                    text: '页面访问Top10'
+               /* title: {
+                    text: '周新增用户趋势'
+                },*/
+                legend:{
+                    bottom:10,
+                    left: 'center',
+                    orient: 'horizontal',
+                    lineStyle:{
+                        type:'solid'
+                    },
+                    icon:'line'
+                    // icon:['roundRect', 'triangle']
                 },
                 tooltip:{
                     trigger: 'axis',  // axis   item   none三个值
                 },
-                yAxis: {
-                    type: 'category',
-                    data:['23年15周','23年16周', '23年17周', '23年18周', '23年19周', '23年20周','23年21周'],
-                    axisLine: {
-                        show: false
-                    },
-                    splitLine: {
-                        show: false
-                    },
-                    axisTick: false
-                },
                 xAxis: {
+                    type: 'category',
+                    data:['23年15周','23年16周', '23年17周', '23年18周', '23年19周', '23年20周','23年21周']
+                },
+                yAxis: {
                     type:'value',
                     splitLine: {
-                        show: false
+                        show: true,
                     },
                     /*axisLabel: {
                         textStyle: { fontSize: '80%', color: '#02afff' },
                     },*/
                     axisLine: {
-                        show: true
+                        show: false
                     },
                     // axisTick: false
+                },
+                series: [
+                    {
+                        name:'会员',
+                        type: 'line',
+                        data: [80,120,200,300,150,120,110],
+                        symbol: 'circle',//折线点设置为实心点
+                        symbolSize: 2,   //折线点的大小
+                        itemStyle: {
+                            normal: {
+                                color: "#2fc25b",//折线点的颜色
+                                lineStyle: {
+                                    color: "#2fc25b"//折线的颜色
+                                }
+                            }
+                        }
+                    },
+                    {
+                        name:'非会员',
+                        type: 'line',
+                        data: [100,160,280,320,180,130,110],
+                        symbol: 'circle',//折线点设置为实心点
+                        symbolSize: 2,   //折线点的大小
+                        itemStyle: {
+                            normal: {
+                                color: "#c40aee",//折线点的颜色
+                                lineStyle: {
+                                    color: "#c40aee"//折线的颜色
+                                }
+                            }
+                        }
+                    }
+                ]
+            };
+            linechart3.setOption(option);
+
+            /**单笔交易金额分布*/
+            var barchart4 = Echarts.init($('#bar-chart4')[0]);
+            var data =[80,1];
+            var total = 81;
+            var option = {
+               /* title: {
+                    text: '周新增用户趋势'
+                },*/
+                left:120,
+                tooltip:{
+                    trigger: 'axis',  // axis   item   none三个值
+                },
+                xAxis: {
+                    type:'value',
+                    axisLine: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: false
+                    },
+                    axisTick: false,
+                },
+                yAxis: {
+                    type: 'category',
+                    data:['0-10元','10-20元','20-30元', '30-40元', '40-50元', '50-60元', '60-70元','70-80元','80-90元','90-100元','100元以上'],
+                    splitLine: {
+                        show: false
+                    },
+                    axisTick: false,
                 },
                 series: [
                     {
                         type: 'bar',
-                        barWidth: 10, // 设置柱状图宽度为30像素
-                        data: [80,120,200,300,150,120,110],
-                        symbol: 'circle',//折线点设置为实心点
-                        symbolSize: 2,   //折线点的大小
-                        itemStyle: {
+                        barWidth:10,
+                        data: data,
+                        label :{
                             normal: {
-                                color: "#2fc25b",//折线点的颜色
-                                lineStyle: {
-                                    color: "#2fc25b"//折线的颜色
-                                }
+                                show: true,
+                                position: 'right',
+                                formatter:function (arg){
+                                    var pre = arg.data/total*100;
+                                    return arg.data+'\u0020\u0020 '+ pre.toFixed(2) +'%';
+                                },
                             }
+                        },
+                        itemStyle : {
+                            barBorderRadius: [0, 10, 10, 0] // 圆角半径, 单位px, 支持传入数组分别指定 4 个圆角半径
                         }
                     }
                 ]
             };
+            barchart4.setOption(option);
 
-            linechart3.setOption(option);
-
-            var linechart4 = Echarts.init($('#line-chart4')[0]);
-            var option = {
-                title: {
-                    text: '周留存指标趋势'
-                },
-                tooltip:{
-                    trigger: 'axis',  // axis   item   none三个值
-                },
-                xAxis: {
-                    type: 'category',
-                    data:['23年15周','23年16周', '23年17周', '23年18周', '23年19周', '23年20周','23年21周']
-                },
-                yAxis: {
-                    type:'value',
-                    splitLine: {
-                        show: true,
-                    },
-                    /*axisLabel: {
-                        textStyle: { fontSize: '80%', color: '#02afff' },
-                    },*/
-                    axisLine: {
-                        show: false
-                    },
-                    // axisTick: false
-                },
-                series: [
-                    {
-                        type: 'line',
-                        data: [80,120,200,300,150,120,110],
-                        symbol: 'circle',//折线点设置为实心点
-                        symbolSize: 2,   //折线点的大小
-                        itemStyle: {
-                            normal: {
-                                color: "#2fc25b",//折线点的颜色
-                                lineStyle: {
-                                    color: "#2fc25b"//折线的颜色
-                                }
-                            }
-                        }
-                    }
-                ]
-            };
-            linechart4.setOption(option);
-
+            /**折线图*/
             var linechart5 = Echarts.init($('#line-chart5')[0]);
             var option = {
-                title: {
-                    text: '好友人数周新增趋势'
-                },
-                /*grid: {
-                    left: '0%',   //距左边边框的距离
-                    right: '0%',  //距右边边框的距离
-                    bottom: '0',//距下面边框的距离
-                    top: '30',    //距上面边框的距离
-                    containLabel: true
+               /* title: {
+                    text: '周新增用户趋势'
                 },*/
+                legend:{
+                    bottom:10,
+                    left: 'center',
+                    orient: 'horizontal',
+                    lineStyle:{
+                        type:'solid'
+                    },
+                    icon:'line'
+                    // icon:['roundRect', 'triangle']
+                },
                 tooltip:{
-                    trigger: 'axis',  // axis   item   none三个值
+                    trigger: 'none',  // axis   item   none三个值
                 },
                 xAxis: {
                     type: 'category',
@@ -465,15 +580,33 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'echarts'
                 },
                 series: [
                     {
+                        name:'会员',
                         type: 'line',
                         data: [80,120,200,300,150,120,110],
-                        symbol: 'circle',//折线点设置为实心点
-                        symbolSize: 2,   //折线点的大小
+                        showSymbol:false,
+                        /*symbol: 'circle',//折线点设置为实心点
+                        symbolSize: 0,   //折线点的大小*/
                         itemStyle: {
                             normal: {
                                 color: "#2fc25b",//折线点的颜色
                                 lineStyle: {
                                     color: "#2fc25b"//折线的颜色
+                                }
+                            }
+                        }
+                    },
+                    {
+                        name:'非会员',
+                        type: 'line',
+                        data: [100,135,256,354,170,145,124],
+                        showSymbol:false,
+                       /* symbol: 'circle',//折线点设置为实心点
+                        symbolSize: 2,   //折线点的大小*/
+                        itemStyle: {
+                            normal: {
+                                color: "#0dc0f6",//折线点的颜色
+                                lineStyle: {
+                                    color: "#0dc0f6"//折线的颜色
                                 }
                             }
                         }
@@ -482,51 +615,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template', 'echarts'
             };
             linechart5.setOption(option);
 
-            var linechart6 = Echarts.init($('#line-chart6')[0]);
-            var option = {
-                title: {
-                    text: '社群人数周新增趋势'
-                },
-                tooltip:{
-                    trigger: 'axis',  // axis   item   none三个值
-                },
-                xAxis: {
-                    type: 'category',
-                    data:['23年15周','23年16周', '23年17周', '23年18周', '23年19周', '23年20周','23年21周']
-                },
-                yAxis: {
-                    type:'value',
-                    splitLine: {
-                        show: true,
-                    },
-                    /*axisLabel: {
-                        textStyle: { fontSize: '80%', color: '#02afff' },
-                    },*/
-                    axisLine: {
-                        show: false
-                    },
-                    // axisTick: false
-                },
-                series: [
-                    {
-                        type: 'line',
-                        data: [80,120,200,300,150,120,110],
-                        symbol: 'circle',//折线点设置为实心点
-                        symbolSize: 2,   //折线点的大小
-                        itemStyle: {
-                            normal: {
-                                color: "#2fc25b",//折线点的颜色
-                                lineStyle: {
-                                    color: "#2fc25b"//折线的颜色
-                                }
-                            }
-                        }
-                    }
-                ]
-            };
-            linechart6.setOption(option);
-
         }
     };
     return Controller;
+
 });

@@ -1,0 +1,164 @@
+<style>
+
+.member-one .row h3, .member-one .row h4 {
+    font-family: 'PingFangSC-Ultralight', 'PingFang SC Ultralight', 'PingFang SC', sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+.line-chart1,.line-chart2,.line-chart3,.pie-chart1{
+    height: 400px;
+}
+.line-chart3{
+    margin-top: 30px;
+}
+.line-chart2,.pie-chart1{
+    width: 45%;
+    display: inline-block;
+}
+.member-two,.member-three{
+    background-color: #ffffff;
+}
+.two-title,.three-title{
+    padding: 10px 0 0 0;
+    margin: 20px 0 20px 20px  ;
+}
+.member-one .row  .panel ,.member-three .row  .panel {
+    border: 1px solid #eaedf4;
+    border-radius: 10px;
+    border-bottom: none;
+    box-shadow: 5px 5px  0 0 rgb(235 238 245);
+}
+.three-box{
+    padding: 0 30px;
+}
+
+</style>
+
+<div class="content">
+    <div class="member-one">
+        <div class="row">
+            <div class="col-lg-4 col-xs-6 one-box">
+                <div class="panel panel-default panel-intro panel-statistics">
+                    <div class="panel-body">
+                        <div class="pull-left">
+                            <h4> 会员总人数</h4>
+                            <h3>{$data.member_total}</h3>
+                        </div>
+                        <div class="pull-right" style="color:rgb(200,227,255);">
+                            <i class="fa fa-users fa-4x"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-4 col-xs-6 one-box">
+                <div class="panel panel-default panel-intro panel-statistics">
+                    <div class="panel-body">
+                        <div class="pull-left">
+                            <h4>储值总金额（元）</h4>
+                            <h3>{$data.stored_value}</h3>
+                        </div>
+                        <div class="pull-right" style="color:#c8cfff;">
+                            <!--<i class="fa fa-cny fa-4x"></i>-->
+                            <img style="width: 60px;height: 60px;" src="/assets/img/money.png">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-4 col-xs-6 one-box">
+                <div class="panel panel-default panel-intro panel-statistics">
+                    <div class="panel-body">
+                        <div class="pull-left">
+                            <h4>储值余额</h4>
+                            <h3>{$data.balance}</h3>
+                        </div>
+                        <div class="pull-right" style="color:#c8cfff;">
+                            <!--<i class="fa fa-users fa-4x"></i>-->
+                            <img style="width: 60px;height: 60px;" src="/assets/img/money.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="member-two">
+        <div class="two-title"><h3>会员概况</h3></div>
+        <div>
+            <div id="line-chart1" class="line-chart1"></div>
+        </div>
+        <div>
+            <div id="line-chart2" class="line-chart2"></div>
+            <div id="pie-chart1" class="pie-chart1">
+            </div>
+        </div>
+    </div>
+
+    <div class="member-three">
+        <div>
+            <div class="three-title"><h4>消费情况</h4></div>
+            <div class="row">
+                <div class="col-lg-3 col-xs-6 three-box">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div class="pull-left">
+                                <h4>会员消费总金额（元）</h4>
+                                <h3>{$data.total_consume_value}</h3>
+                            </div>
+                            <div class="pull-right" style="color:#c8cfff;">
+                                <i class="fa fa-users fa-4x"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-3 col-xs-6 three-box">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div class="pull-left">
+                                <h4>会员优惠金额（元）</h4>
+                                <h3>150</h3>
+                            </div>
+                            <div class="pull-right" style="color:#c8cfff;">
+                               <!-- <i class="fa fa-cny fa-4x"></i>-->
+                                <img style="width: 60px;height: 60px;" src="/assets/img/money.png">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-3 col-xs-6 three-box">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div class="pull-left">
+                                <h4>会员人均消费金额（元）</h4>
+                                <h3>{$data.avg_consume_value}</h3>
+                            </div>
+                            <div class="pull-right" style="color:#c8cfff;">
+                                <!--<i class="fa fa-users fa-4x"></i>-->
+                                <img style="width: 60px;height: 60px;" src="/assets/img/money.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6 three-box">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div class="pull-left">
+                                <h4>会员人均消费频次（次）</h4>
+                                <h3>150</h3>
+                            </div>
+                            <div class="pull-right" style="color:#c8cfff;">
+                                <!--<i class="fa fa-users fa-4x"></i>-->
+                                <img style="width: 60px;height: 60px;" src="/assets/img/consume_frequency.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="line-chart3" class="line-chart3"></div>
+        </div>
+    </div>
+</div>
