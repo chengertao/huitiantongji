@@ -1,4 +1,76 @@
 <style>
+    .one,.two,.three,.four{
+        padding: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .two,.three,.four {
+        background-color: #ffffff;
+    }
+
+
+    .two-title,.three-title,.four-title {
+        display: inline;
+        margin-right: 10px;
+    }
+    .two-content,.three-content,.four-content {
+        margin-top: 10px;
+    }
+    .dateline{
+        color: #acadaf;
+        font-size: small;
+    }
+    .panel {
+        border: 1px solid #eaedf4;
+        border-radius: 10px;
+        border-bottom: none;
+    }
+    .panel-title {
+        display: inline;
+    }
+    .panel-body>div{
+        margin-bottom: 5px;
+    }
+    .bar-chart1,.bar-chart2,.bar-chart3{
+        height: 10px;
+        width: 100%;
+    }
+    .two-content .row>div {
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+    .two-content .row>div .panel {
+        box-shadow: 2px 2px  0 0 rgb(235 238 245);
+    }
+/*    .up-arrow{
+        background-image: url(APP_PATH.'/asset/font/up-arrow-svg')
+    }
+    .down-arrow{
+        background-image: url(APP_PATH.'/asset/font/down-arrow-svg')
+    }*/
+    .three-subtitle{
+        border: 1px solid rgb(230,230,230);
+        width: 95%;
+        margin: auto;
+        height: 50px;
+        border-radius: 5px;
+    }
+    .three-subtitle>div>p{
+        border: 1px solid rgb(230,230,230);
+        margin: 10px 20px;
+        width: 8%;
+        text-align: center;
+        border-radius: 25px;
+        float: left
+    }
+    .line-chart1,.line-chart2,.line-chart3,.line-chart4,.line-chart5,.line-chart6{
+        height: 400px;
+        width: 95%;
+        margin: 20px  auto ;
+    }
 
 </style>
 <!-- Main row -->
@@ -11,40 +83,43 @@
     <div class="one">
         <div class="row">
             <div class="col-lg-4 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-gray">
-                    <div class="inner">
-                        <p>小程序累计总注册人数</p>
-                        <h3>150</h3>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-users"></i>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-lg-4 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-gray">
-                    <div class="inner">
-                        <p>小程序累计收入总金额</p>
-                        <h3>150</h3>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-shopping-cart"></i>
+                <div class="panel panel-default panel-intro panel-statistics">
+                    <div class="panel-body">
+                        <div class="pull-left">
+                            <h4>小程序累计总注册人数</h4>
+                            <h3>150</h3>
+                        </div>
+                        <div class="pull-right" style="color:#c8cfff;">
+                            <i class="fa fa-users fa-4x"></i>
+                        </div>
                     </div>
                 </div>
 
             </div>
             <div class="col-lg-4 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-gray">
-                    <div class="inner">
-                        <p>企微累计总人数</p>
-                        <h3>150</h3>
+                <div class="panel panel-default panel-intro panel-statistics">
+                    <div class="panel-body">
+                        <div class="pull-left">
+                            <h4>小程序累计收入总金额</h4>
+                            <h3>150</h3>
+                        </div>
+                        <div class="pull-right" style="color:#c8cfff;">
+                            <i class="fa fa-cny fa-4x"></i>
+                        </div>
                     </div>
-                    <div class="icon">
-                        <i class="fa fa-shopdping-cart"></i>
+                </div>
+
+            </div>
+            <div class="col-lg-4 col-xs-6">
+                <div class="panel panel-default panel-intro panel-statistics">
+                    <div class="panel-body">
+                        <div class="pull-left">
+                            <h4>企微累计总人数</h4>
+                            <h3>150</h3>
+                        </div>
+                        <div class="pull-right" style="color:#c8cfff;">
+                            <i class="fa fa-users fa-4x"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -52,12 +127,288 @@
     </div>
 
     <div class="two">
+        <div class="two-titles" >
+            <h3 class="two-title">本年度目标及完成情况</h3>
+            <span class="dateline">截至 5/21</span>
+        </div>
+        <div class="two-content">
+            <div class="row">
+                <div class="col-lg-3 col-xs-6">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div>
+                                <p class="panel-title">小程序注册用户数</p>
+                                <span style="float: right;">0</span> 
+                            </div>
+                            <div id="bar-chart1" class="bar-chart1">
+                            </div>
+                            <div >
+                                <p class="panel-title">目标</p>
+                                <span style="float: right;">0</span> 
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div>
+                                <p class="panel-title">in客星球</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                               <!-- <p class="panel-title">周新增<span class="up-arrow">4.19%</span></p>-->
+                                <p class="panel-title">周新增</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                                <p class="panel-title">目标</p>
+                                <span style="float: right;">0</span>
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div>
+                                <p class="panel-title">回天运动圈</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div>
+                                <!--<p class="panel-title">周新增<span class="up-arrow">4.19%</span></p>-->
+                                <p class="panel-title">周新增</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                                <p class="panel-title">目标</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div>
+                                <p class="panel-title">回天邻里</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div>
+                                <!--<p class="panel-title">周新增 <span class="down-arrow">4.19%</span></p>-->
+                                <p class="panel-title">周新增</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                                <p class="panel-title">目标</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-xs-6">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div>
+                                <p class="panel-title">小程序收入金额</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div id="bar-chart2" class="bar-chart2">
+                            </div>
+                            <div >
+                                <p class="panel-title">目标</p>
+                                <span style="float: right;">0</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div>
+                                <p class="panel-title">in客星球</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                                <!--<p class="panel-title">周新增 <span class="down-arrow">4.19%</span></p>-->
+                                <p class="panel-title">周新增</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                                <p class="panel-title">目标</p>
+                                <span style="float: right;">0</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div>
+                                <p class="panel-title">回天运动圈</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                                <!--<p class="panel-title">周新增<span class="down-arrow">4.19%</span></p>-->
+                                <p class="panel-title">周新增</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                                <p class="panel-title">目标</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div>
+                                <p class="panel-title">回天运动圈</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                                <p class="panel-title">周新增<span class="down-arrow">4.19%</span></p>
+                                <img src="" />
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                                <p class="panel-title">目标</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-xs-6">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div>
+                                <p class="panel-title">企微客户数量</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div id="bar-chart3" class="bar-chart3">
+                            </div>
+                            <div >
+                                <p class="panel-title">目标</p>
+                                <span style="float: right;">0</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div>
+                                <p class="panel-title">好友总数</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                                <!--<p class="panel-title">周新增<span class="down-arrow">4.19%</span></p>-->
+                                <p class="panel-title">周新增</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                                <p class="panel-title">目标</p>
+                                <span style="float: right;">0</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div>
+                                <p class="panel-title">社群总数</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                                <!--<p class="panel-title">周新增<span class="down-arrow">4.19%</span></p>-->
+                                <p class="panel-title">周新增</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                                <p class="panel-title">目标</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="panel panel-default panel-intro panel-statistics">
+                        <div class="panel-body">
+                            <div>
+                                <p class="panel-title">社群总人数</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                                <!--p class="panel-title">周新增<span class="down-arrow">4.19%</span></p>-->
+                                <p class="panel-title">周新增</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                            <div >
+                                <p class="panel-title">目标</p>
+                                <span style="float: right;">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
     </div>
+
     <div class="three">
+        <div class="three-titles" >
+            <h3 class="three-title">访问分析</h3>
+            <span class="dateline">截至 5/21</span>
+        </div>
+        <div class="three-content">
+            <div class="three-subtitle">
+                <div>
+                    <p>in客星球</p>
+                    <p>回天邻里</p>
+                    <p>回天运动圈</p>
+                </div>
+            </div>
 
+            <!--折线图   周新增用户趋势-->
+            <div class="line-chart1" id = "line-chart1">
+            </div>
+            <!--折线图   周打开次数-->
+            <div class="line-chart2" id = "line-chart2">
+            </div>
+            <!--折线图   页面访问Top10-->
+            <div class="line-chart3" id = "line-chart3">
+            </div>
+            <!--折线图  周留存指标趋势-->
+            <div class="line-chart4" id = "line-chart4">
+            </div>
+        </div>
     </div>
+
+
     <div class="four">
+        <div class="four-titles" >
+            <h3 class="four-title">企微用户分析</h3>
+            <span class="dateline">截至 5/21</span>
+        </div>
+        <!--折线图  好友人数周新增趋势-->
+        <div class="line-chart5" id = "line-chart5">
+
+        </div>
+        <!--折线图  社群人数周新增趋势-->
+        <div class="line-chart6" id = "line-chart6">
+
+        </div>
 
     </div>
 </div>
